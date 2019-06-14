@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             val pages = editTextPages.text.toString().toIntOrNull() ?: 0
 
             val intent = Intent(this, BookInfoActivity::class.java)
+            // TODO Use parcelable
             intent.putExtra("isbn", isbn)
             intent.putExtra("title", title)
             intent.putExtra("author", author)

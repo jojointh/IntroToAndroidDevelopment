@@ -13,6 +13,7 @@ class BookInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_book_info)
 
         val bundle = intent
+        // TODO Use parcelable
         val isbn = bundle.getStringExtra("isbn")
         val title = bundle.getStringExtra("title")
         val author = bundle.getStringExtra("author")
