@@ -6,4 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextIsbn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewIsbn"
+        app:layout_constraintStart_toEndOf="@+id/textViewIsbn"
+        app:layout_constraintTop_toTopOf="@+id/textViewIsbn" />
+
+    <TextView
+        android:id="@+id/textViewIsbn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="ISBN"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Title"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIsbn" />
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@+id/editTextIsbn"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
+
+    <EditText
+        android:id="@+id/editTextAuthor"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAuthor"
+        app:layout_constraintStart_toStartOf="@+id/editTextTitle"
+        app:layout_constraintTop_toTopOf="@+id/textViewAuthor" />
+
+    <TextView
+        android:id="@+id/textViewAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Author"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/textViewPages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Pages"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAuthor" />
+
+    <EditText
+        android:id="@+id/editTextPages"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPages"
+        app:layout_constraintStart_toStartOf="@+id/editTextAuthor"
+        app:layout_constraintTop_toTopOf="@+id/textViewPages" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPages" />
 </androidx.constraintlayout.widget.ConstraintLayout>
