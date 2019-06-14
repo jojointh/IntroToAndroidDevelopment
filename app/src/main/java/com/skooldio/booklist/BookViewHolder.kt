@@ -21,4 +21,6 @@ class BookViewHolder(override val containerView: View) : RecyclerView.ViewHolder
     fun setPages(pages: Int) {
         textViewPages.text = "$pages"
     }
+
+    // TODO Add setOnClickListener method to make itemView clickable with listener
 }

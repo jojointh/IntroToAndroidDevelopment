@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class BookAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BookViewHolder>() {
+    // TODO Declare onItemClick function
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_book, parent, false)
         return BookViewHolder(view)
@@ -18,5 +20,8 @@ class BookAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BookViewHolde
         holder.setTitle(book.title)
         holder.setAuthor(book.author)
         holder.setPages(book.pages)
+        // TODO Call setOnClickListener from ViewHolder and invoke the onItemClick with data
     }
+
+    // TODO Create setItemOnClickListener method
 }

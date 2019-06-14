@@ -19,7 +19,10 @@ class BookListActivity : AppCompatActivity() {
         )
 
         val adapter = BookAdapter(bookList)
+        // TODO Call setOnItemClickListener from adapter
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
+
+    // TODO Create function to show the book title when item clicked
 }
