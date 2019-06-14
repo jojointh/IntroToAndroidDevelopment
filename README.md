@@ -1,2 +1,2 @@
-# intro-to-android-development
+# Intro to Android Development
 Android Course by Skooldio
