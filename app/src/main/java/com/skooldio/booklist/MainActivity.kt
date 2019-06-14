@@ -16,12 +16,10 @@ class MainActivity : AppCompatActivity() {
             val title = editTextTitle.text.toString()
             val author = editTextAuthor.text.toString()
             val pages = editTextPages.text.toString().toIntOrNull() ?: 0
+            val book = Book(isbn, title, author, pages)
 
             val intent = Intent(this, BookInfoActivity::class.java)
-            intent.putExtra("isbn", isbn)
-            intent.putExtra("title", title)
-            intent.putExtra("author", author)
-            intent.putExtra("pages", pages)
+            intent.putExtra("book", book)
             startActivity(intent)
         }
     }

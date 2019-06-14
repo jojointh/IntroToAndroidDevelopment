@@ -13,14 +13,11 @@ class BookInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_book_info)
 
         val bundle = intent
-        val isbn = bundle.getStringExtra("isbn")
-        val title = bundle.getStringExtra("title")
-        val author = bundle.getStringExtra("author")
-        val pages = bundle.getIntExtra("pages", 0)
+        val book: Book? = bundle.getParcelableExtra("book")
 
-        textViewIsbn.text = isbn
-        textViewTitle.text = title
-        textViewAuthor.text = author
-        textViewPages.text = "$pages"
+        textViewIsbn.text = book?.isbn ?: "-"
+        textViewTitle.text = book?.title ?: "-"
+        textViewAuthor.text = book?.author ?: "-"
+        textViewPages.text = "${book?.pages ?: 0}"
     }
 }
