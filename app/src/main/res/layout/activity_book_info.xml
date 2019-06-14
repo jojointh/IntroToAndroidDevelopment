@@ -7,4 +7,86 @@
         android:layout_height="match_parent"
         tools:context=".BookInfoActivity">
 
+    <TextView
+        android:id="@+id/textViewIsbnLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="ISBN"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewIsbn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIsbnLabel"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/textViewTitleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Title"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIsbn" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewIsbn"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleLabel"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/textViewAuthorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Author"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/textViewAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthorLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAuthorLabel"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/textViewPagesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Pages"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAuthor" />
+
+    <TextView
+        android:id="@+id/textViewPages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAuthor"
+        app:layout_constraintStart_toStartOf="@+id/textViewPagesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPagesLabel"
+        tools:text="-" />
 </androidx.constraintlayout.widget.ConstraintLayout>
