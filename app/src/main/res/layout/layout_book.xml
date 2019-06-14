@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewIsbnLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="ISBN"
+        android:textColor="#9A9A9A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textColor="#9A9A9A"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbnLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/textViewIsbn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#414141"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewIsbnLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewIsbnLabel"
+        tools:text="1933988673" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#414141"
+        app:layout_constraintEnd_toEndOf="@+id/textViewIsbn"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIsbn"
+        tools:text="Unlocking Android" />
+
+    <TextView
+        android:id="@+id/textViewAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#414141"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        tools:text="W. Frank Ableson" />
+
+    <TextView
+        android:id="@+id/textViewAuthorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textColor="#9A9A9A"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewAuthor" />
+
+    <TextView
+        android:id="@+id/textViewPages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="#414141"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAuthor"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAuthor"
+        tools:text="416" />
+
+    <TextView
+        android:id="@+id/textViewPageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pages"
+        android:textColor="#9A9A9A"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthorLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewPages" />
+</androidx.constraintlayout.widget.ConstraintLayout>
