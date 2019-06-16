@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 data class Book(
     @PrimaryKey
     @ColumnInfo(name = "isbn")
-    var isbn: String?,
+    var isbn: String,
 
     @ColumnInfo(name = "title")
     var title: String?,
