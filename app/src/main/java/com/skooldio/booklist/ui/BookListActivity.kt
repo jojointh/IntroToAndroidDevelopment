@@ -7,9 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skooldio.booklist.R
 import com.skooldio.booklist.api.BookApiManager
+import com.skooldio.booklist.db.DatabaseManager
 import com.skooldio.booklist.vo.Book
 import com.skooldio.booklist.vo.Books
 import kotlinx.android.synthetic.main.activity_book_list.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,12 +29,13 @@ class BookListActivity : AppCompatActivity() {
         setupRecyclerView()
         getBookListFromApi()
         showLoading()
+//        getBookListFromDatabase()
     }
 
     private fun setupRecyclerView() {
         adapter.setOnItemClickListener(onItemClick)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this@BookListActivity)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun getBookListFromApi() {
@@ -37,7 +43,10 @@ class BookListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Books>?, response: Response<Books>?) {
                 val books: Books? = response?.body()
                 val bookList: List<Book>? = books?.books
-                updateBookList(bookList)
+                bookList?.let {
+                    updateBookList(bookList)
+                    insertBookListToDatabase(bookList)
+                }
                 hideLoading()
             }
 
@@ -49,6 +58,22 @@ class BookListActivity : AppCompatActivity() {
 
     private fun updateBookList(bookList: List<Book>?) {
         adapter.setBookList(bookList)
+    }
+
+    private fun insertBookListToDatabase(bookList: List<Book>) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val books = bookList.toTypedArray()
+            DatabaseManager.get().bookDao().insertBooks(*books)
+        }
+    }
+
+    private fun getBookListFromDatabase() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val bookList = withContext(Dispatchers.IO) {
+                DatabaseManager.get().bookDao().getAllBooks()
+            }
+            updateBookList(bookList)
+        }
     }
 
     private fun showLoading() {
