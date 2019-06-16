@@ -1,8 +1,9 @@
-package com.skooldio.booklist
+package com.skooldio.booklist.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.skooldio.booklist.R
 import com.skooldio.booklist.vo.Book
 
 class BookAdapter : RecyclerView.Adapter<BookViewHolder>() {

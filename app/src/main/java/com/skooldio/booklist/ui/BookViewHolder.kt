@@ -1,4 +1,4 @@
-package com.skooldio.booklist
+package com.skooldio.booklist.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

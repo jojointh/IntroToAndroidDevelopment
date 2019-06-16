@@ -1,8 +1,9 @@
-package com.skooldio.booklist
+package com.skooldio.booklist.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.skooldio.booklist.R
 import com.skooldio.booklist.vo.Book
 import kotlinx.android.synthetic.main.activity_main.*
 

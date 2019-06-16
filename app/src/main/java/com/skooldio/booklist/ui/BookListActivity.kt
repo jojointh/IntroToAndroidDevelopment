@@ -1,10 +1,11 @@
-package com.skooldio.booklist
+package com.skooldio.booklist.ui
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skooldio.booklist.R
 import com.skooldio.booklist.api.BookApiManager
 import com.skooldio.booklist.vo.Book
 import com.skooldio.booklist.vo.Books
