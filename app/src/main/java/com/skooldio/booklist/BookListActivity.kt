@@ -1,6 +1,7 @@
 package com.skooldio.booklist
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ class BookListActivity : AppCompatActivity() {
 
         setupRecyclerView()
         getBookListFromApi()
+        showLoading()
     }
 
     private fun setupRecyclerView() {
@@ -35,6 +37,7 @@ class BookListActivity : AppCompatActivity() {
                 val books: Books? = response?.body()
                 val bookList: List<Book>? = books?.books
                 updateBookList(bookList)
+                hideLoading()
             }
 
             override fun onFailure(call: Call<Books>?, t: Throwable?) {
@@ -45,6 +48,14 @@ class BookListActivity : AppCompatActivity() {
 
     private fun updateBookList(bookList: List<Book>?) {
         adapter.setBookList(bookList)
+    }
+
+    private fun showLoading() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        progressBar.visibility = View.GONE
     }
 
     private val onItemClick = { book: Book ->
