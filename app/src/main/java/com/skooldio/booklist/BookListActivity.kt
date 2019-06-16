@@ -22,7 +22,7 @@ class BookListActivity : AppCompatActivity() {
             Book("1930110545", ".NET Multithreading", "Alan Dennis", 360),
             Book("1884777597", "Software Requirements", "Benjamin L. Kovitz", 448)
         )
-        adapter.setBookList(bookList)
+        updateBookList(bookList)
     }
 
     private fun setupRecyclerView() {
