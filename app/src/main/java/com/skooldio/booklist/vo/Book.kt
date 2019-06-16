@@ -1,4 +1,4 @@
-package com.skooldio.booklist
+package com.skooldio.booklist.vo
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
