@@ -5,6 +5,9 @@ import com.skooldio.booklist.vo.Book
 
 @Dao
 interface BookDao {
+    @Query("SELECT * FROM book_list")
+    fun getAllBooks(): List<Book>
+
     @Query("SELECT * FROM book_list WHERE isbn = :isbn LIMIT 1")
     fun getBookByIsbn(isbn: String?): Book
 
