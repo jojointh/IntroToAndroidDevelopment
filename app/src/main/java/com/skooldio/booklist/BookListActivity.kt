@@ -4,8 +4,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skooldio.booklist.api.BookApiManager
 import com.skooldio.booklist.vo.Book
+import com.skooldio.booklist.vo.Books
 import kotlinx.android.synthetic.main.activity_book_list.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BookListActivity : AppCompatActivity() {
     private var adapter = BookAdapter()
@@ -13,22 +18,29 @@ class BookListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_list)
-        setupRecyclerView()
 
-        val bookList = mutableListOf(
-            Book("1933988673", "Unlocking Android", "W. Frank Ableson", 416),
-            Book("1935182080", "Hello! Python", "Anthony Briggs", 350),
-            Book("1617291269", "iOS in Practice", "Bear P. Cahill", 325),
-            Book("1930110545", ".NET Multithreading", "Alan Dennis", 360),
-            Book("1884777597", "Software Requirements", "Benjamin L. Kovitz", 448)
-        )
-        adapter.setBookList(bookList)
+        setupRecyclerView()
+        getBookListFromApi()
     }
 
     private fun setupRecyclerView() {
         adapter.setOnItemClickListener(onItemClick)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this@BookListActivity)
+    }
+
+    private fun getBookListFromApi() {
+        BookApiManager.get().getAllBooks().enqueue(object : Callback<Books> {
+            override fun onResponse(call: Call<Books>?, response: Response<Books>?) {
+                val books: Books? = response?.body()
+                val bookList: List<Book>? = books?.books
+                updateBookList(bookList)
+            }
+
+            override fun onFailure(call: Call<Books>?, t: Throwable?) {
+                // Do something
+            }
+        })
     }
 
     private fun updateBookList(bookList: List<Book>?) {
