@@ -3,8 +3,10 @@ package com.skooldio.booklist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.skooldio.booklist.vo.Book
 
-class BookAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BookViewHolder>() {
+class BookAdapter : RecyclerView.Adapter<BookViewHolder>() {
+    private var bookList: List<Book>? = null
     private var onItemClick: ((Book) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -12,15 +14,22 @@ class BookAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BookViewHolde
         return BookViewHolder(view)
     }
 
-    override fun getItemCount(): Int = bookList.size
+    override fun getItemCount(): Int = bookList?.size ?: 0
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        val book = bookList[position]
-        holder.setIsbn(book.isbn)
-        holder.setTitle(book.title)
-        holder.setAuthor(book.author)
-        holder.setPages(book.pages)
-        holder.setOnClickListener { onItemClick?.invoke(book) }
+        val book = bookList?.get(position)
+        book?.let {
+            holder.setIsbn(book.isbn)
+            holder.setTitle(book.title)
+            holder.setAuthor(book.author)
+            holder.setPages(book.pages)
+            holder.setOnClickListener { onItemClick?.invoke(book) }
+        }
+    }
+
+    fun setBookList(bookList: List<Book>?) {
+        this.bookList = bookList
+        notifyDataSetChanged()
     }
 
     fun setOnItemClickListener(onItemClick: ((Book) -> Unit)?) {
