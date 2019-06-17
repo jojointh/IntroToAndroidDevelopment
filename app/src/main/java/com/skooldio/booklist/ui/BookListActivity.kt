@@ -18,6 +18,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 class BookListActivity : AppCompatActivity() {
     private var adapter = BookAdapter()
@@ -27,9 +28,29 @@ class BookListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_book_list)
 
         setupRecyclerView()
-        getBookListFromApi()
         showLoading()
+        getBookList()
+//        getBookListFromApi()
 //        getBookListFromDatabase()
+    }
+
+    private fun getBookList() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val bookList: List<Book>? = withContext(Dispatchers.IO) {
+                var bookList: List<Book>? = DatabaseManager.get().bookDao().getAllBooks()
+                if (bookList == null || bookList.isEmpty()) {
+                    try {
+                        bookList = BookApiManager.get().getAllBooks().execute().body()?.books ?: listOf()
+                        insertBookListToDatabase(bookList)
+                    } catch (e: IOException) {
+
+                    }
+                }
+                bookList
+            }
+            updateBookList(bookList)
+            hideLoading()
+        }
     }
 
     private fun setupRecyclerView() {
